@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IELTS Speaking Forecast Q3 - Ms Lê Hằng English</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-purple: #8854C0;
+            --primary-yellow: #FDCB6E;
+            --primary-teal: #00C9A7;
+            --correct-green: #00D26A;
+            --wrong-red: #FF4757;
+            --dark-text: #2D3436;
+            --card-bg: rgba(255, 255, 255, 0.95);
+        }
+
+        * {
+            box-sizing: border-box;
+            font-family: 'Quicksand', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-x: hidden;
+            position: relative;
+            color: var(--dark-text);
+            padding: 20px;
+            /* Hiệu ứng chuyển màu loang liên tục cho dải màu Gradient */
+            background: linear-gradient(-45deg, #8854C0, #FDCB6E, #00C9A7, #E84393);
+            background-size: 400% 400%;
+            animation: gradientBg 15s ease infinite;
+        }
+
+        @keyframes gradientBg {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Lớp SVG họa tiết vui nhộn lơ lửng chuyển động độc lập */
+        .bg-pattern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+            mix-blend-mode: overlay;
+            opacity: 0.3;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cpath d='M20,20 Q25,10 30,20 T40,20' fill='none' stroke='white' stroke-width='3'/%3E%3Ccircle cx='70' cy='30' r='8' fill='white'/%3E%3Cpolygon points='50,70 55,80 45,80' fill='white'/%3E%3Cpath d='M80,80 Q85,75 90,80' fill='none' stroke='white' stroke-width='3'/%3E%3C/svg%3E");
+            animation: floatingPattern 20s linear infinite;
+        }
+
+        @keyframes floatingPattern {
+            0% { background-position: 0 0; }
+            100% { background-position: 100px 200px; }
+        }
+
+        header {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            margin-bottom: 20px;
+            background: rgba(255, 255, 255, 0.85);
+            padding: 15px 30px;
+            border-radius: 20px;
+            box-shadow: 0 8px 0 rgba(0,0,0,0.1);
+        }
+
+        header h5 {
+            font-size: 0.95rem;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        header h1 {
+            font-size: 1.8rem;
+            color: var(--primary-purple);
+            font-weight: 900;
+        }
+
+        header h6 {
+            font-size: 0.85rem;
+            color: #d63031;
+            margin-top: 5px;
+            font-weight: 700;
+        }
+
+        /* Hệ thống Tabs điều hướng */
+        .tabs-container {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            gap: 12px;
+            margin-bottom: 25px;
+            width: 100%;
+            max-width: 800px;
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 12px 10px;
+            font-size: 1.1rem;
+            font-weight: 900;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            background: white;
+            color: var(--primary-purple);
+            box-shadow: 0 5px 0 #ddd;
+            transition: all 0.2s ease;
+        }
+
+        .tab-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 7px 0 #ddd;
+        }
+
+        .tab-btn.active {
+            background: var(--primary-yellow);
+            color: #000;
+            box-shadow: 0 5px 0 #d5a139;
+            transform: translateY(2px);
+        }
+
+        /* Khung nội dung chính chứa các câu hỏi dạng Card */
+        .content-container {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            max-width: 800px;
+            display: none;
+        }
+
+        .content-container.active {
+            display: block;
+        }
+
+        .info-block {
+            background: #E0F7FA;
+            border-left: 6px solid var(--primary-teal);
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 25px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            border: 3px solid #FFF;
+        }
+
+        .question-title {
+            font-size: 1.25rem;
+            font-weight: 900;
+            margin-bottom: 15px;
+            color: var(--primary-purple);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .text-content-box {
+            background: #f9f9f9;
+            border-radius: 15px;
+            padding: 15px;
+            margin-bottom: 15px;
+            border: 1px dashed #ccc;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        .option-btn {
+            background: white;
+            border: 3px solid #E0E0E0;
+            border-radius: 18px;
+            padding: 14px 20px;
+            font-size: 1rem;
+            font-weight: 700;
+            text-align: left;
+            cursor: pointer;
+            box-shadow: 0 5px 0 #E0E0E0;
+            transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
+            color: var(--dark-text);
+        }
+
+        .option-btn:hover {
+            transform: scale(1.02) translateY(-2px);
+            box-shadow: 0 7px 0 #CCC;
+            background-color: #FAFAFA;
+        }
+
+        .option-btn.correct {
+            background-color: var(--correct-green) !important;
+            color: white !important;
+            border-color: #00B359 !important;
+            box-shadow: 0 5px 0 #00944A !important;
+        }
+
+        .option-btn.wrong {
+            background-color: var(--wrong-red) !important;
+            color: white !important;
+            border-color: #E03E4D !important;
+            box-shadow: 0 5px 0 #C2303E !important;
+        }
+
+        /* Hiệu ứng Rung Lắc khi sai */
+        .shake {
+            animation: shakeAnim 0.4s ease-in-out;
+        }
+
+        @keyframes shakeAnim {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-8px); }
+            40%, 80% { transform: translateX(8px); }
+        }
+
+        /* Khung lời giải chi tiết giải thích */
+        .explanation-box {
+            margin-top: 15px;
+            padding: 15px;
+            background: #FFF9E6;
+            border-radius: 15px;
+            border-left: 5px solid var(--primary-yellow);
+            display: none;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .explanation-box h4 {
+            color: #D6A211;
+            margin-bottom: 5px;
+            font-weight: 900;
+        }
+
+        /* Bảng so sánh DO & DON'T */
+        .table-container {
+            overflow-x: auto;
+            margin: 15px 0;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            font-size: 0.9rem;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            border: 1px solid #E0E0E0;
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary-purple);
+            color: white;
+            font-weight: 900;
+        }
+
+        tr:nth-child(even) {
+            background: #F8F9FA;
+        }
+
+        /* Khớp nối link tài liệu */
+        .link-badge {
+            display: inline-block;
+            background: #E8F5E9;
+            color: #2E7D32;
+            padding: 6px 12px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.85rem;
+            margin: 4px;
+            border: 1px solid #C8E6C9;
+        }
+        .link-badge:hover {
+            background: #C8E6C9;
+        }
+
+        /* Pháo giấy Confetti hiệu ứng */
+        .confetti {
+            position: fixed;
+            width: 8px;
+            height: 8px;
+            background-color: #f00;
+            position: absolute;
+            z-index: 999;
+            top: -10px;
+            border-radius: 50%;
+            animation: fall linear forwards;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-pattern"></div>
+
+    <header>
+        <h5>Giáo viên tạo: Ms Lê Hằng English</h5>
+        <h1>IELTS SPEAKING INTERACTIVE WORKBOOK</h1>
+        <h6>#UPDATE FORECAST QUÝ 3</h6>
+    </header>
+
+    <!-- Điều hướng 3 Tab riêng biệt -->
+    <div class="tabs-container">
+        <button class="tab-btn active" onclick="switchTab(1)">PART 1</button>
+        <button class="tab-btn" onclick="switchTab(2)">PART 2</button>
+        <button class="tab-btn" onclick="switchTab(3)">PART 3</button>
+    </div>
+
+    <!-- ================= TAB 1 ================= -->
+    <div id="tab1" class="content-container active">
+        <div class="info-block">
+            <strong>💡 Cấu trúc trả lời chung Part 1:</strong><br>
+            • Trả lời trực tiếp: yes/no/…<br>
+            • Giải thích/tác động<br>
+            • So sánh thói quen của bản thân ở 3 mốc thời gian: quá khứ &gt;&lt; hiện tại &gt;&lt; tương lai (đối với những câu hỏi trực tiếp về mình) hoặc nói thêm về thói quen của bản thân (đối với những câu hỏi chung chung)<br><br>
+            <strong>🎯 Quy tắc vàng:</strong> Trực tiếp → Mở rộng WH questions (what, where, why) (1-2 câu).
+        </div>
+
+        <!-- Câu hỏi 1 -->
+        <div class="card" id="q1">
+            <div class="question-title">📋 Question 1: How do you remember important things?</div>
+            <div class="text-content-box">
+                <em>Mẫu trả lời chuẩn:</em> "Well I'm not so good at remembering things so I often jot them down, say my upcoming events or important occasions, in my diary or insert them on Google Calendar. This helps me to stay organized and stick to my schedule."
+            </div>
+            <p><strong>Nhiệm vụ:</strong> Đâu là cụm từ đồng nghĩa với "ghi chú lại nhanh" được dùng trong câu trên?</p>
+            <div class="options-grid">
+                <button class="option-btn" onclick="checkAnswer(this, true, 'q1')">jot them down</button>
+                <button class="option-btn" onclick="checkAnswer(this, false, 'q1')">insert them</button>
+                <button class="option-btn" onclick="checkAnswer(this, false, 'q1')">stick to</button>
+            </div>
+            <div class="explanation-box">
+                <h4>👩‍🎓 Lời giải chi tiết từ Thạc sỹ Lê Hằng:</h4>
+                Cụm từ <strong>"jot down"</strong> là phrasal verb cực kỳ tự nhiên, nghĩa là viết nhanh, ghi chép nhanh lại điều gì đó để không quên. Việc áp dụng linh hoạt thay cho "write down" sẽ ăn điểm rất cao về Vocab và độ mượt mà!
+            </div>
+        </div>
+
+        <!-- Câu hỏi 2 -->
+        <div class="card" id="q2">
+            <div class="question-title">📋 Question 2: Do people in your country often send flowers to others?</div>
+            <div class="text-content-box">
+                "Yes they do cuz flowers are great gifts for special occasions like birthdays or anniversaries. Also, they can show our appreciation and love for others."
+            </div>
+            <p><strong>Nhiệm vụ:</strong> Tại sao câu trả lời này đạt điểm chuẩn cấu trúc Part 1?</p>
+            <div class="options-grid">
+                <button class="option-btn" onclick="checkAnswer(this, false, 'q2')">Vì nó cực kỳ dài dòng và dùng nhiều từ vựng chuyên ngành.</button>
+                <button class="option-btn" onclick="checkAnswer(this, true, 'q2')">Vì trả lời trực tiếp (Yes they do) + Giải thích lí do mở rộng hợp lý.</button>
+            </div>
+            <div class="explanation-box">
+                <h4>👩‍🎓 Lời giải chi tiết từ Thạc sỹ Lê Hằng:</h4>
+                Chính xác! Đề hỏi "Do people...", ta đi thẳng trọng tâm "Yes they do", sau đó dùng liên từ "cuz" và "Also" để liệt kê ngắn gọn lý do (birthdays, anniversaries, appreciation). Không lan man!
+            </div>
+        </div>
+
+        <!-- Câu hỏi 3 -->
+        <div class="card" id="q3">
+            <div class="question-title">📋 Question 3: Do you take photos of flowers in your daily life?</div>
+            <div class="text-content-box">
+                "Well I have to say that I'm a big fan of taking selfies with flowers, just to make sure that I look presentable. However, I'm just a highschool student and I'm on a tight budget, so I do not often buy flowers just to take photos with them."
+            </div>
+            <p><strong>Nhiệm vụ:</strong> Ý nghĩa của trạng từ "presentable" và cụm "on a tight budget" ở ngữ cảnh này là gì?</p>
+            <div class="options-grid">
+                <button class="option-btn" onclick="checkAnswer(this, true, 'q3')">presentable: chỉnh chu/bảnh bao ; on a tight budget: túi tiền hạn hẹp.</button>
+                <button class="option-btn" onclick="checkAnswer(this, false, 'q3')">presentable: hiện diện ; on a tight budget: có nhiều ngân sách làm phim.</button>
+            </div>
+            <div class="explanation-box">
+                <h4>👩‍🎓 Lời giải chi tiết từ Thạc sỹ Lê Hằng:</h4>
+                <strong>"Look presentable"</strong> nghĩa là trông gọn gàng, ưa nhìn, đủ tự tin xuất hiện trước mọi người. <strong>"On a tight budget"</strong> là cụm từ rất hay mô tả việc eo hẹp tài chính, cực hợp với học sinh/sinh viên!
+            </div>
+        </div>
+
+        <!-- Câu hỏi 4 -->
+        <div class="card" id="q4">
+            <div class="question-title">📋 Question 4: Are there a lot of flowers where you live?</div>
+            <div class="text-content-box">
+                "Honestly there are a lot of them in parks or any green spaces near my neighbourhood. I often go to these places on weekends to let my hair down and enjoy my day."
+            </div>
+            <p><strong>Nhiệm vụ:</strong> Cụm từ "let my hair down" mang ý nghĩa gì?</p>
+            <div class="options-grid">
+                <button class="option-btn" onclick="checkAnswer(this, false, 'q4')">Cắt tóc hoặc xõa tóc dài ra cho mát.</button>
+                <button class="option-btn" onclick="checkAnswer(this, true, 'q4')">Thư giãn, xả hơi sau những ngày mệt mỏi.</button>
+            </div>
+            <div class="explanation-box">
+                <h4>👩‍🎓 Lời giải chi tiết từ Thạc sỹ Lê Hằng:</h4>
+                Idiom <strong>"let one's hair down"</strong> tương đương với "relax/unwind". Sử dụng idiom thân thuộc này trong Part 1 giúp câu trả lời mang đậm tính bản xứ, tự nhiên vô cùng!
+            </div>
+        </div>
+
+        <!-- Bảng DO & DON'T Part 1 -->
+        <div class="card">
+            <div class="question-title">📊 CHIẾN LƯỢC DO's & DON'T TẠI PART 1</div>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>DON’T</th>
+                            <th>DO</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Trả lời quá dài vì trong đầu có quá nhiều ideas</td>
+                            <td>Chọn 1 idea đầu tiên nghĩ ra và bám sát nó</td>
+                        </tr>
+                        <tr>
+                            <td>Nói lan man → giám khảo ngắt lời → không triển khai được ý sau</td>
+                            <td>Trả lời ngắn – rõ – có mở rộng vừa đủ</td>
+                        </tr>
+                        <tr>
+                            <td>Cố nhồi collocations / idioms nâng cao nhưng chưa hiểu rõ nghĩa</td>
+                            <td>Dùng từ vựng đơn giản, quen thuộc với bản thân</td>
+                        </tr>
+                        <tr>
+                            <td>Học theo các post kiểu “dùng từ này để Speaking 8.0”</td>
+                            <td>Học từ vựng qua ngữ cảnh thật (interview, video, IELTS Advantage)</td>
+                        </tr>
+                        <tr>
+                            <td>Nói theo template, cố làm câu trả lời “nghe cho ngầu”</td>
+                            <td>Nói tự nhiên, đúng với cách mình suy nghĩ</td>
+                        </tr>
+                        <tr>
+                            <td>Chọn idea khó để impress giám khảo</td>
+                            <td>Chọn idea gần gũi, dễ nói, dễ đào sâu</td>
+                        </tr>
+                        <tr>
+                            <td>Quá căng thẳng ở Part 1</td>
+                            <td>Feel free ở Part 1, trả lời chân thật, thoải mái → FLUENCY</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ================= TAB 2 ================= -->
+    <div id="tab2" class="content-container">
+        <div class="info-block">
+            <strong>🎯 Cấu trúc chiến lược Part 2: Hãy gắn tất cả vào trải nghiệm cá nhân + Đào sâu 1 đặc điểm của đối tượng.</strong><br>
+            • <strong>Opening:</strong> Trả lời các câu hỏi BG: What? When/Where? - How did I feel?<br>
+            • <strong>Challenges</strong> (Khó khăn gặp phải)<br>
+            • <strong>Solutions</strong> (Cách xử lý Khó khăn)<br>
+            • <strong>Emotions / LESSONS</strong> (Cảm xúc rút ra)<br>
+            ➔ <em>Hầu hết các đề part 2 (OBJECT + EVENT) đều có thể gắn với trải nghiệm và dùng tư duy Challenges - Solutions để xử lý (MAKE-UP STORIES).</em>
+        </div>
+
+        <!-- Đề mẫu 1 -->
+        <div class="card" id="q5">
+            <div class="question-title">⭐ Topic 1: Describe a famous person you would like to meet</div>
+            <div class="text-content-box">
+                <strong>Dàn ý chi tiết chuẩn phòng thi:</strong><br>
+                • <strong>Para Intro:</strong> So now I’m gonna talk about ROSE FROM BP WHO I really want to meet in the near future.<br>
+                • <strong>BODY:</strong><br>
+                &nbsp;&nbsp;- Who he/she is (2-3 CÂU): name + age + hobby + hometown + personality<br>
+                &nbsp;&nbsp;- How you knew him/her: came across, on the Internet about 5 years ago<br>
+                &nbsp;&nbsp;- How/where you would like to meet him/her: concert<br>
+                &nbsp;&nbsp;- And explain why you would like to meet him/ her<br>
+                • <strong>Conclu:</strong> If I had to talk about a celebrity, it would have to be R.
+            </div>
+            <p><strong>Nhiệm vụ:</strong> Khi gặp đề tả người/vật/trải nghiệm, để tăng điểm ấn tượng (How did I feel?) ngay từ đầu ta nên nói gì?</p>
+            <div class="options-grid">
+                <button class="option-btn" onclick="checkAnswer(this, true, 'q5')">Dùng các cụm: I was totally impressed by... / I was blown away (AMAZED) by...</button>
+                <button class="option-btn" onclick="checkAnswer(this, false, 'q5')">Không cần bộc lộ cảm xúc, chỉ liệt kê tuổi tác, quê quán từ đầu tới cuối.</button>
+            </div>
+            <div class="explanation-box">
+                <h4>👩‍🎓 Lời giải chi tiết từ Thạc sỹ Lê Hằng:</h4>
+                Đúng rồi! Việc đưa cảm xúc mạnh như "I was totally impressed by her beauty..." hoặc "I was blown away by..." giúp bài nói có hồn, cuốn hút giám khảo ngay từ 20 giây đầu tiên.
+            </div>
+        </div>
+
+        <!-- Đề mẫu 2 kèm Note và Bài mẫu full -->
+        <div class="card" id="q6">
+            <div class="question-title">⭐ Topic 2: Describe a time when somebody persuaded you to do something</div>
+            
+            <div class="text-content-box" style="background:#FFFDE7;">
+                <strong>☕ TAKE NOTE IN 1 MINUTE:</strong><br>
+                OPENING: DAMUN – student-led organization - hesitant (0 leadership skills) – my friend - you can do it - give it a shot (TRY)<br>
+                Nói sơ lược về MUN (Model United Nations) - representatives - tackle global challenges<br>
+                CHALLENGES: We - encounter - fail to attract participants - our project - fall apart<br>
+                SOLUTIONS: marketing - turn out - successful<br>
+                ⇒ FEELINGS: Rewarding
+            </div>
+
+            <div class="text-content-box">
+                <strong>☕ BÀI TRẢ LỜI FULL MẪU (Time: 2 phút):</strong><br><br>
+                <strong>Background:</strong> I’m going to talk about DAMUN, a student-led organization. Honestly, my friend invited me to join in this project with her, but I was hesitant at first as I didn’t have any leadership skills. After that, she persuaded me. I still remember vividly that she said - you can do it - and yeah, after a while, I decided to give it a shot.<br><br>
+                To give you a bit of information, MUN stands for Model United Nations, where participants can be representatives for different countries, it’s kinda a role play game. And they will propose solutions to global challenges, this year we discussed crimes and food insecurity. So yeah, basically, we will organize an annual conference in August.<br><br>
+                <strong>Challenges:</strong> I have to say that our project encountered a lot of challenges. In order to run our main conference, we had to hold a Mock MUN, where we will test everything beforehand to make sure they are all OK. However, we failed to attract enough participants and <em>(nghỉ 2 giây, làm mặt buồn)</em>, for a while, it felt like our project might fall apart. (TAN RÃ)<br><br>
+                <strong>Solutions:</strong> Then, we decided to run marketing campaigns and fortunately, we attracted so many students from different parts of my nation. Our main conference turned out to be so successful that we all felt rewarding cuz we have gone a very long way.
+            </div>
+
+            <p><strong>Nhiệm vụ:</strong> Cụm từ "give it a shot" và "fall apart" trong bài mẫu trên có ý nghĩa gì?</p>
+            <div class="options-grid">
+                <button class="option-btn" onclick="checkAnswer(this, false, 'q6')">Bắn một phát súng / Chia thành nhiều phần nhỏ.</button>
+                <button class="option-btn" onclick="checkAnswer(this, true, 'q6')">Thử làm một việc gì đó / Tan rã, đổ vỡ, thất bại.</button>
+            </div>
+            <div class="explanation-box">
+                <h4>👩‍🎓 Lời giải chi tiết từ Thạc sỹ Lê Hằng:</h4>
+                Tuyệt vời! <strong>"Give it a shot"</strong> mang nghĩa là thử làm một cái gì đó mới dù chưa có kinh nghiệm. Còn <strong>"fall apart"</strong> mang nghĩa là sụp đổ, tan rã, dùng để miêu tả tình huống thách thức (challenges) đẩy tính kịch tính của câu chuyện lên cao!
+            </div>
+        </div>
+
+        <!-- Tư duy Make-up Stories ứng dụng các đề -->
+        <div class="card">
+            <div class="question-title">💡 VÍ DỤ MẠCH TƯ DUY "MAKE-UP STORIES" CHO CÁC ĐỀ KHÁC</div>
+            <div style="display:flex; flex-direction:column; gap:10px; font-size:0.95rem;">
+                <div style="padding:10px; background:white; border-radius:10px; border-left:4px solid #8854C0;">
+                    <strong>Describe a beautiful photo you have taken:</strong> Đi Nha Trang để chụp ảnh bình minh - sáng hôm sau dậy trễ nên k chụp được – buồn, thất vọng → may mắn thay, chiều hôm đó chụp được hoàng hôn.
+                </div>
+                <div style="padding:10px; background:white; border-radius:10px; border-left:4px solid #8854C0;">
+                    <strong>Describe your mom:</strong> Mẹ rất dedicated to her teaching profession - tuy nhiên, at first, mẹ gặp nhiều khó khăn trong việc lên lesson plans, lack patience và di chuyển xa đến trường → sau đó, mẹ đã hỏi experts trong ngành và đi phương tiện công cộng để tiết kiệm + đi nhanh hơn.
+                </div>
+                <div style="padding:10px; background:white; border-radius:10px; border-left:4px solid #8854C0;">
+                    <strong>Describe your favourite line of poem/song:</strong> “You can do it with a broken heart” - kể câu chuyện hồi ôn thi lớp 9 - struggle + lack motivation trong việc học -> nghe nhạc của Taylor và nhận ra giá trị của lời bài hát này (teaches me about resilience) → cố gắng hơn và đậu vào trường yêu thích.
+                </div>
+                <div style="padding:10px; background:white; border-radius:10px; border-left:4px solid #8854C0;">
+                    <strong>Các đề khác tương tự:</strong> Describe a park (stress vì học tập quá – ra park let my hair down), Describe your first time at school, Describe your favorite English lesson, Describe your favourite technological device... đều ráp chung công thức Trải nghiệm + Khó khăn + Giải pháp.
+                </div>
+            </div>
+        </div>
+
+        <!-- Protip cốt lõi -->
+        <div class="card">
+            <div class="question-title">🚀 PROTIP: CHUẨN BỊ ĐỀ CORE TRƯỚC KHI ĐI THI</div>
+            <p style="font-size:0.95rem; margin-bottom:10px;">Hãy chuẩn bị các nhóm đề cơ bản sau để xoay chuyển linh hoạt:</p>
+            <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px; font-size:0.9rem;">
+                <div style="background:#FFF; padding:10px; border-radius:10px;">
+                    <strong>PEOPLE:</strong> Người già, Người nổi tiếng, Ba/mẹ, Bạn thân/đồng nghiệp.
+                </div>
+                <div style="background:#FFF; padding:10px; border-radius:10px;">
+                    <strong>OBJECT:</strong> Công việc/học tập (laptop, smartphone...), Món quà tinh thần (sách, đồng hồ...), Đồ gia dụng.
+                </div>
+                <div style="background:#FFF; padding:10px; border-radius:10px;">
+                    <strong>PLACE (5 ĐỀ):</strong> Big (Ideal house, Historical sites/MUSEUM, Coffee shop); Small (Natural->PARK, Sport->STADIUM).
+                </div>
+                <div style="background:#FFF; padding:10px; border-radius:10px;">
+                    <strong>ACTIVITY:</strong> Chuyến đi đáng nhớ (Nha Trang), Event đáng nhớ (từ thiện/hội thảo), Thử thách khó (học IELTS/thi đỗ cấp 3).
+                </div>
+            </div>
+        </div>
+
+        <!-- Tài liệu bổ trợ đính kèm -->
+        <div class="card">
+            <div class="question-title">🔗 LINK GHÉP ĐỀ VÀ TÀI LIỆU BỔ TRỢ (100% NGUYÊN VẸN)</div>
+            <div style="margin-top:10px;">
+                <a class="link-badge" href="https://drive.google.com/file/d/1_J-Nvh27Zh26eRIxG4OfFkD_bbxfUSDH/view?usp=sharing" target="_blank">Ghép Đề Quy Hoạch</a>
+                <a class="link-badge" href="https://drive.google.com/file/d/1JeQJUN7Lul_NaocgAyRuHwwn_vB3uKo7/view?usp=sharing" target="_blank">Bổ sung ideas part 2</a>
+                <a class="link-badge" href="https://drive.google.com/file/d/1Mz6wPH3KHG0nzibyx7jiF65zJKZfMnsf/view?usp=sharing" target="_blank">Tài liệu Part 2 + 3</a>
+                <a class="link-badge" href="https://docs.google.com/document/d/1WpSCvdK5iTgLXnHxNcDGiuEp8bDe8v0Y/edit?tab=t.0" target="_blank">Vocab Speaking (Nâng cao)</a>
+                <a class="link-badge" href="https://drive.google.com/file/d/12JIjthtg7WUxl8RJR5UPw4A1WtevqWX9/view?usp=sharing" target="_blank">Vocab Speaking (Cơ bản - P1)</a>
+                <a class="link-badge" href="https://drive.google.com/file/d/1d7Pp7muUpigMgf3_6NruR3IKPOr7oAeQ/view?usp=sharing" target="_blank">Vocab Speaking (Cơ bản - P2)</a>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ================= TAB 3 ================= -->
+    <div id="tab3" class="content-container">
+        <div class="info-block">
+            <strong>🎯 Tiêu chí Part 3: Simple, Straightforward, Keep it real.</strong><br>
+            • Trả lời trực tiếp: yes/no/…<br>
+            • Phát triển ý tưởng bằng giải thích/hệ quả (because/so)<br>
+            • Ví dụ (khái quát hoá/mang tính cá nhân)<br>
+            • Ý kiến đối lập (optional) → nối bằng "but yeah"<br>
+            ⚠️ <em>Lưu ý: Câu sau phải làm rõ hơn câu trước, tránh lập luận vòng vo dễ bị hỏi Why, đồng thời tăng điểm CC (Coherence & Cohesion). KO HAM TỪ VỰNG CAO SIÊU MÀ GIẢM TRÔI CHẢY!</em>
+        </div>
+
+        <!-- Câu hỏi 1 -->
+        <div class="card" id="q7">
+            <div class="question-title">📋 Q1: What do parents in your country often persuade their children to do?</div>
+            <div class="text-content-box">
+                "Well it is a common norm in Vietnam that parents often tell their children to do household chores. Take me as an example, my parents often persuade me to do routine tasks like washing the dishes. And honestly, I found them boring back to that time, but I gradually realize the importance of these activities, as they provide me essential skills, so yeah, I have started to do them more often now.<br>
+                <em>[Wrap-up]:</em> So I think my experience reflects what usually happens in Vietnam, where parents often encourage kids to help with housework."
+            </div>
+            <p><strong>Nhiệm vụ:</strong> Mục đích của câu cuối cùng (Wrap-up) phục vụ mục đích gì cho câu trả lời?</p>
+            <div class="options-grid">
+                <button class="option-btn" onclick="checkAnswer(this, true, 'q7')">Đảm bảo tính khách quan, khái quát hóa ví dụ cá nhân thành xu hướng chung của xã hội.</button>
+                <button class="option-btn" onclick="checkAnswer(this, false, 'q7')">Kéo dài thời gian khi bí ý mà không mang lại giá trị lập luận nào.</button>
+            </div>
+            <div class="explanation-box">
+                <h4>👩‍🎓 Lời giải chi tiết từ Thạc sỹ Lê Hằng:</h4>
+                Chuẩn rồi! Trong Part 3, khi bạn lấy ví dụ về bản thân mình (Take me as an example), việc thêm câu chốt hạ "So I think my experience reflects..." sẽ chuyển câu trả lời từ cá nhân sang tính vĩ mô cộng đồng xã hội, rất đúng chuẩn yêu cầu đánh giá Part 3.
+            </div>
+        </div>
+
+        <!-- Câu hỏi 2 -->
+        <div class="card" id="q8">
+            <div class="question-title">📋 Q2: How can teachers persuade their students?</div>
+            <div class="text-content-box">
+                "Hmm (2 giây) They can simply give them praises, like “You can do it”, “You can nail it” and students can then be motivated to strive towards excellence"
+            </div>
+            <p><strong>Nhiệm vụ:</strong> Cụm từ "nail it" đồng nghĩa với ý nào sau đây?</p>
+            <div class="options-grid">
+                <button class="option-btn" onclick="checkAnswer(this, false, 'q8')">Đóng một cây đinh lên bảng gỗ.</button>
+                <button class="option-btn" onclick="checkAnswer(this, true, 'q8')">Hoàn thành xuất sắc nhiệm vụ, làm rất tốt.</button>
+            </div>
+            <div class="explanation-box">
+                <h4>👩‍🎓 Lời giải chi tiết từ Thạc sỹ Lê Hằng:</h4>
+                Chính xác! <strong>"Nail it"</strong> là idiom giao tiếp cực thịnh hành, mang ý nghĩa làm cực kỳ tốt, thành công mỹ mãn. Đưa từ này vào lời trích dẫn của giáo viên làm câu trả lời sinh động hẳn lên!
+            </div>
+        </div>
+
+        <!-- Câu hỏi 3 -->
+        <div class="card" id="q9">
+            <div class="question-title">📋 Q3: Do Students often ask parents or teachers for advice?</div>
+            <div class="text-content-box">
+                "I have to say it really depends. Personally, I often turn to my mom for career guidance as she is an English teacher. However, when it comes to how to get higher grades at school, I often ask my teachers. But yeah, they also turn to their parents for sensitive topics that they cannot confer with their teachers."
+            </div>
+            <p><strong>Nhiệm vụ:</strong> Chiến thuật đối với câu hỏi lựa chọn "A or B" được xử lý như thế nào ở câu trên?</p>
+            <div class="options-grid">
+                <button class="option-btn" onclick="checkAnswer(this, true, 'q9')">Dùng "it depends", triển khai rõ ràng cả 2 bên ngắn gọn và dùng "But yeah" bổ sung.</button>
+                <button class="option-btn" onclick="checkAnswer(this, false, 'q9')">Bắt buộc chỉ được chọn duy nhất một bên và phủ nhận hoàn toàn bên còn lại.</button>
+            </div>
+            <div class="explanation-box">
+                <h4>👩‍🎓 Lời giải chi tiết từ Thạc sỹ Lê Hằng:</h4>
+                Nếu bạn hiểu rõ trường hợp nào chọn A, trường hợp nào chọn B thì cứ tự tin nói <strong>"It depends"</strong> và chia rõ hai vế ra giải thích như bài mẫu. Rất logic và mang tính đa chiều tốt!
+            </div>
+        </div>
+
+        <!-- Câu hỏi 4 & 5 dạng ngắn hiển thị đầy đủ -->
+        <div class="card">
+            <div class="question-title">📋 KHẢO SÁT CÁC CÂU TRẢ LỜI MẪU NGẮN ĐI THẲNG TRỌNG TÂM</div>
+            <div style="font-size: 0.95rem; line-height: 1.6; display:flex; flex-direction:column; gap:15px;">
+                <div style="background:#FFF; padding:12px; border-radius:12px;">
+                    <strong>Is persuasive writing necessary in today’s era?</strong><br>
+                    "Of course yes. For example, if you are a teacher, you not only have to convey knowledge to students but also prepare lesson plans, conduct research or publications, and to do these, you need to write in a logical way."
+                </div>
+                <div style="background:#FFF; padding:12px; border-radius:12px;">
+                    <strong>Do speakers need to have persuasive communication?</strong><br>
+                    "Yes, definitely cuz having a persuasive way of communicating can inspire others. For example, they often have to plan what to say next or think in a logical way, so that their contents are understandable to the public."
+                </div>
+            </div>
+        </div>
+
+        <!-- Câu hỏi so sánh hai cách trả lời -->
+        <div class="card" id="q10">
+            <div class="question-title">📋 Q4: Why do some people enjoy living in big cities?</div>
+            <div class="text-content-box">
+                <strong>Cách 1 (Liệt kê):</strong> People enjoy living in big cities for a whole host of reasons. First of all, there are more entertainment options... Secondly, big cities offer better job opportunities... And finally, everything is just more convenient...<br><br>
+                <strong>Cách 2 (Tập trung 1 ý sâu):</strong> I guess it’s mainly because there are more entertainment options. For example, in large cities, people can easily go to a concert or a new art exhibition, which makes life enjoyable. But yeah, I would say that it’s not the only reason, since some people might already find the entertainment in smaller towns sufficient.
+            </div>
+            <p><strong>Nhiệm vụ:</strong> Cách trả lời nào là đúng đắn và được khuyến khích trong phòng thi?</p>
+            <div class="options-grid">
+                <button class="option-btn" onclick="checkAnswer(this, true, 'q10')">Cả 2 cách đều được, tùy thuộc vào phản xạ: liệt kê rõ ràng hoặc đào thật sâu 1 ý.</button>
+                <button class="option-btn" onclick="checkAnswer(this, false, 'q10')">Không cách nào đúng cả vì thiếu các cấu trúc ngữ pháp đảo ngữ phức tạp.</button>
+            </div>
+            <div class="explanation-box">
+                <h4>👩‍🎓 Lời giải chi tiết từ Thạc sỹ Lê Hằng:</h4>
+                Chính xác! Bạn có thể chọn trả lời liệt kê theo luận điểm rõ ràng (First, Secondly, Finally) hoặc chỉ pick duy nhất một ý chính rồi lấy ví dụ chi tiết đào sâu kèm phản đề "But yeah". Miễn là mạch lạc, tự nhiên là ghi điểm.
+            </div>
+        </div>
+
+        <!-- Bảng DO & DON'T Part 3 -->
+        <div class="card">
+            <div class="question-title">📊 BẢNG VÀNG DO & DON'T TRONG IELTS SPEAKING PART 3</div>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>DON’T (KHÔNG NÊN)</th>
+                            <th>DO (NÊN LÀM)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Trả lời quá dài, phát triển như 1 body Writing Task 2 (4–5 câu)</td>
+                            <td>Giữ câu trả lời 2–3 câu là đủ, nói vừa tầm để kiểm soát</td>
+                        </tr>
+                        <tr>
+                            <td>Cố bẻ câu để nhét vocab mới học → nghe sượng, mất tự nhiên</td>
+                            <td>Nói sao cho mình hiểu được trước, giám khảo hiểu sau</td>
+                        </tr>
+                        <tr>
+                            <td>Dùng vocab/collocation nâng cao nhưng chưa hiểu rõ cách dùng</td>
+                            <td>Nếu học vocab nâng cao → học cả cụm collocation và dùng tự nhiên</td>
+                        </tr>
+                        <tr>
+                            <td>Dùng quá nhiều template: on the one hand, chief among these is…</td>
+                            <td>Đi thẳng vào vấn đề, tránh mở bài dài dòng</td>
+                        </tr>
+                        <tr>
+                            <td>Trả lời mơ hồ, vòng vo, câu sau lặp ý câu trước</td>
+                            <td>Câu sau phải RÕ HƠN câu trước, có phát triển ý</td>
+                        </tr>
+                        <tr>
+                            <td>Cố triển khai nhiều ideas trong 1 câu hỏi</td>
+                            <td>Chỉ chọn 1 idea và đào sâu idea đó</td>
+                        </tr>
+                        <tr>
+                            <td>Ham ideas “nghe cho cool” nhưng bản thân không hiểu rõ</td>
+                            <td>Chọn ideas đơn giản – quen phục – dễ triển khai</td>
+                        </tr>
+                        <tr>
+                            <td>Trả lời phức tạp để gây ấn tượng</td>
+                            <td>Keep it real – nói gần với trải nghiệm và đời sống của mình</td>
+                        </tr>
+                        <tr>
+                            <td>Nói chung chung, không cụ thể → dễ bị hỏi “Why?”</td>
+                            <td>Cụ thể hoá bằng ví dụ (người, vật, hành động cụ thể)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Ví dụ so sánh trực quan lỗi sai -->
+        <div class="card">
+            <div class="question-title">💡 VÍ DỤ MINH HỌA PHÂN TÍCH LỖI VÒNG VO TRONG PHÒNG THI</div>
+            <p style="font-size:0.95rem; margin-bottom:10px;"><strong>Đề bài:</strong> Why do products advertised by famous people often sell more?</p>
+            <div style="background:#FFEBEE; padding:12px; border-radius:12px; border-left:5px solid var(--wrong-red); margin-bottom:10px; font-size:0.9rem;">
+                <strong>❎ TRẢ LỜI SAI (VÒNG VO, DỄ BỊ HỎI WHY):</strong><br>
+                "To begin with, I think advertisements featuring idols can influence younger generations as they follow fan culture and want to purchase items to support their idols. So i think…" <br>
+                ➔ <em>Phân tích: Câu DÀI, cảm giác VÒNG VO, chưa giải thích được items ở đây là gì, fan culture cụ thể là như thế nào. Giám khảo có xu hướng hỏi WHY ngay sau đó để làm rõ.</em>
+            </div>
+            <div style="background:#E8F5E9; padding:12px; border-radius:12px; border-left:5px solid var(--correct-green); font-size:0.9rem;">
+                <strong>✅ TRẢ LỜI ĐÚNG (TRỌNG TÂM, CỤ THỂ):</strong><br>
+                "Well it’s all about fan culture. For example, young girls in my country often buy clothes or accessories with the images of Blackpink on them, just because they can support their favorite artists financially."<br>
+                ➔ <em>Phân tích: Trả lời thẳng vào trọng tâm, minh hoạ rõ nét fan culture qua việc cụ thể hóa hành động "buy clothes or accessories".</em>
+            </div>
+        </div>
+
+        <!-- Series Hỏi Đáp Cuối Cùng -->
+        <div class="card">
+            <div class="question-title">❓ SERIES HỎI – ĐÁP CỐT LÕI | IELTS SPEAKING</div>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Câu hỏi</th>
+                            <th>Câu trả lời chiến lược</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Khi đi thi Speaking, nên chuẩn bị Part 2 như thế nào?</td>
+                            <td>Nên chuẩn bị những đề core (people – place – object – activity), sau đó xoay linh hoạt cho nhiều đề khác nhau thay vì học từng đề riêng lẻ.</td>
+                        </tr>
+                        <tr>
+                            <td>Làm sao để Part 2 nghe tự nhiên và không bị gượng?</td>
+                            <td>Nên gắn câu trả lời với trải nghiệm cá nhân. Càng có nhiều trải nghiệm thực tế, bài nói càng thật và dễ triển khai.</td>
+                        </tr>
+                        <tr>
+                            <td>Gặp đề miêu tả nhưng bí từ vựng thì xử lý ra sao?</td>
+                            <td>Không nên cố miêu tả bằng vocab nâng cao. Thay vào đó, có thể kể một trải nghiệm liên quan, sau đó miêu tả đối tượng ở mức vừa đủ.</td>
+                        </tr>
+                        <tr>
+                            <td>Trong Part 2, nên nói nhiều đặc điểm hay tập trung một đặc điểm?</td>
+                            <td>Nên đào sâu một đặc điểm nổi bật của đối tượng thay vì nói lan man nhiều ý, giúp tăng điểm Coherence & Cohesion.</td>
+                        </tr>
+                        <tr>
+                            <td>Ví dụ cho cách đào sâu một idea trong Part 2?</td>
+                            <td>Với đề describe your memorable trip, có thể tập trung vào một trải nghiệm cụ thể (ăn uống, đi lại…) và triển khai theo tư duy challenge – solution.</td>
+                        </tr>
+                        <tr>
+                            <td>Với đề describe an object (ví dụ: phone), nên triển khai thế nào?</td>
+                            <td>Chọn một tính năng cụ thể (camera, pin, màn hình…) rồi gắn với một câu chuyện hoặc tình huống thực tế để làm rõ.</td>
+                        </tr>
+                        <tr>
+                            <td>Trong phòng thi có nên triển khai nhiều ideas cho một câu hỏi?</td>
+                            <td>Không nên. Tốt nhất là chỉ chọn một idea và cụ thể hóa nó, tránh nói nhiều ý mơ hồ dễ bị giám khảo ngắt và hỏi “Why?”.</td>
+                        </tr>
+                        <tr>
+                            <td>Với các câu hỏi mang tính vĩ mô (môi trường, xã hội…), trả lời thế nào cho dễ?</td>
+                            <td>Nên thu hẹp góc nhìn về môi trường sống xung quanh (khu phố, trường học, gia đình…) để dễ lấy ví dụ và nói rõ ý.</td>
+                        </tr>
+                        <tr>
+                            <td>Có được dùng “hmm”, “um”, “ah” trong phòng thi không?</td>
+                            <td>Có thể dùng ở mức vừa phải. Nghỉ một vài giây để suy nghĩ vẫn tốt hơn là nói vội và thiếu kiểm soát.</td>
+                        </tr>
+                        <tr>
+                            <td>Chiến lược trả lời Part 3 nên là gì?</td>
+                            <td>Nên liên hệ với trải nghiệm thường ngày. Nếu khó giải thích, có thể chuyển thẳng sang ví dụ để làm rõ ý.</td>
+                        </tr>
+                        <tr>
+                            <td>Nên học từ vựng Speaking theo thứ tự nào?</td>
+                            <td>Nên ưu tiên luyện ý tưởng và phản xạ trước, sau đó mới nâng cấp từ vựng. Học vocab trước dễ làm câu trả lời bị gượng và thiếu linh hoạt.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Video & Nguồn tài liệu đính kèm Tab 3 -->
+        <div class="card">
+            <div class="question-title">🎥 NGUỒN TÀI LIỆU VIDEO & BÀI MẪU ĐÍNH KÈM CHUẨN</div>
+            <div style="margin-top:10px;">
+                <a class="link-badge" href="https://www.youtube.com/live/72vfewLUZ20" target="_blank">Link Video Bài Giảng Trực Tiếp</a>
+                <a class="link-badge" href="https://www.youtube.com/@Ieltsadvantage" target="_blank">Kênh Mẫu IELTS Advantage</a>
+                <span class="link-badge" style="background:#FFF3E0; color:#E65100; border-color:#FFE0B2;">Tập tài liệu đính kèm: Tổng hợp bài mẫu IELTS Speaking Part 3 Simon - ielts-nguyenhuyen.pdf</span>
+                <span class="link-badge" style="background:#FFF3E0; color:#E65100; border-color:#FFE0B2;">Tập tài liệu đính kèm: TỪ VỰNG SPEAKING CHUYÊN SÂU (QUÝ I + II 2023).pdf</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Khởi tạo hệ thống Web Audio API để tự động sinh âm thanh mà không cần link ngoài
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+        function playSound(type) {
+            if (type === 'correct') {
+                // Tạo âm thanh bíp cao vui tươi 'Ding'
+                let osc = audioCtx.createOscillator();
+                let gain = audioCtx.createGain();
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(587.33, audioCtx.currentTime); // D5
+                osc.frequency.setValueAtTime(880, audioCtx.currentTime + 0.1); // A5
+                gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.4);
+                osc.start();
+                osc.stop(audioCtx.currentTime + 0.4);
+            } else {
+                // Tạo chuỗi âm thanh trầm buồn xuống dần 'Téo teo tèo' / 'Oh no'
+                let now = audioCtx.currentTime;
+                let osc = audioCtx.createOscillator();
+                let gain = audioCtx.createGain();
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                osc.type = 'sawtooth';
+                
+                osc.frequency.setValueAtTime(220, now); // A3
+                osc.frequency.setValueAtTime(180, now + 0.15); // F3
+                osc.frequency.setValueAtTime(130, now + 0.3); // C3
+                
+                gain.gain.setValueAtTime(0.2, now);
+                gain.gain.exponentialRampToValueAtTime(0.01, now + 0.5);
+                osc.start();
+                osc.stop(now + 0.5);
+            }
+        }
+
+        // Chuyển đổi qua lại giữa các Tab mượt mà
+        function switchTab(tabIndex) {
+            document.querySelectorAll('.content-container').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+            
+            document.getElementById('tab' + tabIndex).classList.add('active');
+            document.querySelectorAll('.tab-btn')[tabIndex - 1].classList.add('active');
+        }
+
+        // Kiểm tra đáp án trắc nghiệm tương tác
+        function checkAnswer(button, isCorrect, cardId) {
+            const card = document.getElementById(cardId);
+            const buttons = card.querySelectorAll('.option-btn');
+            
+            // Khóa không cho bấm lại các nút trong cùng card
+            buttons.forEach(btn => btn.disabled = true);
+
+            if (isCorrect) {
+                button.classList.add('correct');
+                playSound('correct');
+                createConfetti();
+            } else {
+                button.classList.add('wrong');
+                card.classList.add('shake');
+                playSound('wrong');
+                // Tự động tô xanh đáp án đúng cho học sinh dễ nhận biết
+                buttons.forEach(btn => {
+                    if(btn.getAttribute('onclick').includes('true')) {
+                        btn.classList.add('correct');
+                    }
+                });
+                setTimeout(() => card.classList.remove('shake'), 500);
+            }
+
+            // Hiển thị khung giải thích chi tiết của Giáo viên
+            const expBox = card.querySelector('.explanation-box');
+            if (expBox) {
+                expBox.style.display = 'block';
+            }
+        }
+
+        // Tạo hiệu ứng pháo giấy Confetti lung linh khi làm bài đúng
+        function createConfetti() {
+            const colors = ['#FFC107', '#FF4081', '#00E676', '#00B0FF', '#651FFF'];
+            for (let i = 0; i < 35; i++) {
+                const confetti = document.createElement('div');
+                confetti.classList.add('confetti');
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.transform = `scale(${Math.random() * 1.2 + 0.5})`;
+                confetti.style.animationDuration = Math.random() * 1.5 + 1 + 's';
+                document.body.appendChild(confetti);
+                setTimeout(() => confetti.remove(), 2500);
+            }
+        }
+    </script>
+</body>
+</html>
